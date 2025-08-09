@@ -24,7 +24,9 @@ jobs:
           git config --global user.email "ci@leavesmc.org"
           git config --global user.name "LeavesMC CI"
       - name: Apply Patches
-        run: ./gradlew applyAllPatches
+        run: |
+          chmod +x gradlew
+          ./gradlew applyAllPatches
       - name: Create Leavesclip Jar
         run: ./gradlew createMojmapLeavesclipJar
       - name: Move Jar
@@ -40,4 +42,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ${{ env.jar }}
+
           path: ${{ env.jar }}
