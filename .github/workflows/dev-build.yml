@@ -25,6 +25,10 @@ jobs:
           git config --global user.name "LeavesMC CI"
       - name: Apply Patches
         run: |
+          pwd
+          ls -l gradlew
+          file gradlew
+          head -n 5 gradlew
           chmod +x gradlew
           ./gradlew applyAllPatches
       - name: Create Leavesclip Jar
@@ -44,3 +48,4 @@ jobs:
           name: ${{ env.jar }}
 
           path: ${{ env.jar }}
+
