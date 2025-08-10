@@ -30,23 +30,14 @@ jobs:
         run: |
           ./gradlew build
           ./gradlew assemble
-          ./gradlew reobfJar
+          ./gradlew jar
           ls build/libs/
-      - name: Move Jar
-        run: |
-          prop() {
-            grep "${1}" gradle.properties | cut -d'=' -f2 | sed 's/\r//'
-          }
-          
-          jarName="Lumina-1.21.6-R0.1-SNAPSHOT.jar"
-          mv build/libs/Lumina-1.21.6-R0.1-SNAPSHOT.jar "$jarName"
-          echo "jar=$jarName" >> "$GITHUB_ENV"
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ env.jar }}
+          name: all jar
+          path: build/libs
 
-          path: ${{ env.jar }}
 
 
 
