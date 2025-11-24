@@ -1,6 +1,6 @@
 --- a/folia-server/build.gradle.kts
 +++ b/folia-server/build.gradle.kts
-@@ -8,6 +_,7 @@
+@@ -8,7 +_,8 @@
  plugins {
 -    `java-library`
 -    `maven-publish`
