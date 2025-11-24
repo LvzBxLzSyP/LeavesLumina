@@ -3,6 +3,7 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent
 
 plugins {
     java
+    id("com.github.johnrengelman.shadow") version "7.1.2"
     id("io.papermc.paperweight.patcher") version "2.0.0-beta.17"
 }
 
@@ -81,6 +82,10 @@ subprojects {
             exceptionFormat = TestExceptionFormat.FULL
             events(TestLogEvent.STANDARD_OUT)
         }
+    }
+
+    tasks.named("build") {
+        dependsOn("shadowJar")
     }
 
     extensions.configure<PublishingExtension> {
